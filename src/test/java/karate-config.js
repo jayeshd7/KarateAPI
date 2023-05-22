@@ -12,6 +12,7 @@ function fn() {
     // customize
     // e.g. config.foo = 'bar';
   } else if (env == 'e2e') {
+
     // customize
   }
   return config;

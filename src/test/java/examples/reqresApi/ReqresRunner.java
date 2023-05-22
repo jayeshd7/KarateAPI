@@ -3,7 +3,6 @@ package examples.reqresApi;
 import com.intuit.karate.junit5.Karate;
 
 
-
 class ReqresRunner {
 
     @Karate.Test

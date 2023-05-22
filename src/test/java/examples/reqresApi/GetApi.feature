@@ -4,6 +4,23 @@ Feature: Sample Get Api Test
     * url 'https://reqres.in'
 
   Scenario: Test a sample GET Api
-    Given path 'api/users?page=2'
+    * def query = {page:'<pages>'}
+    * def values =
+
+    """
+    function(o) {
+      for (var key in o) {
+        if (o[key] == '') o[key] = 2;
+      }
+      return o;
+    }
+
+    """
+    * def getResponseParam = read('get-response-param.js')
+    * def query = values(query)
+    * print query
+
+    Given path 'api/users'
+    And  params query
     When method get
     Then status 200

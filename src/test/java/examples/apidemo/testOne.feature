@@ -2,12 +2,12 @@ Feature: test the reqres different api's
 
 Background: 
     * def getSchemaFile = read('../../resources\\schemaGetUser.json')
+    Given url 'https://reqres.in'
 
 
 
 Scenario: Test the api to get the list of users.
-    Given url 'https://reqres.in'
-    And path '/api/users'
+    Given path '/api/users'
     And param page = 2
     When method GET
     Then status 200
@@ -30,7 +30,7 @@ Scenario: data Schema validation and structure
     Then status 200
     And print response
     And match response == getSchemaFile.schemaOne
-    And match response.data[0] == getSchemaFile.data_schema
+    And match each response.data[*] == getSchemaFile.data_schema
 
 
 Scenario: per page validation
@@ -89,4 +89,16 @@ Scenario: full schema validation
 
 
 
+Scenario Outline: Single user api test cases with dynamic path.
+    Given url 'https://reqres.in'
+    And path '/api/users/<id>'
+    When method GET
+    Then status 200
+    And match response.data.id == <id>
+    And print response.data.id
 
+    Examples:
+        | id |
+        | 3    |
+        | 2    |
+        

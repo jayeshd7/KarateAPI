@@ -4,7 +4,7 @@ import com.intuit.karate.junit5.Karate;
 
 
 class ReqresRunner {
-
+    
     @Karate.Test
     Karate testGetReqresApi() {
         return Karate.run("GetApi").relativeTo(getClass());

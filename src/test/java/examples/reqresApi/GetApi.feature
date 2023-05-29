@@ -16,11 +16,11 @@ Feature: Sample Get Api Test
     }
 
     """
-    * def getResponseParam = read('get-response-param.js')
-    * def query = values(query)
-    * print query
+   // * def getResponseParam = read('get-response-param.js')
+   // * def query = values(query)
+   // * print query
 
-    Given path 'api/users'
+    Given path '/api/users'
     And  params query
     When method get
     Then status 200

@@ -3,8 +3,8 @@ Feature: test the flow of reqres different api's
 
 Background: 
     * def postRequestbodyRegisterUser = read('../../resources\\requestBodyRegisterUser.json')
-    # * def passwordCreationUtilis = Java.type('examples.utils.PasswordUtility')
-    # * def getpwd = passwordCreationUtilis.getPassword(8)
+    * def passwordCreationUtilis = Java.type('examples.utils.PasswordUtility')
+    * def getpwd = passwordCreationUtilis.getPassword(8)
 
     Given url 'https://reqres.in'
 
@@ -60,6 +60,5 @@ Scenario: Test the api to get the list of users.
     * def actualToken = validateToken(response.token)
     * match actualToken == true
 
-Scenario: Test thegetpassword from java
-    * def passwordCreationUtilis = Java.type('examples.utils.PasswordUtility');
-    * def getpwd = passwordCreationUtilis.getPassword(8);
+Scenario: Test getPassword from java
+    * print 'password is' , getpwd

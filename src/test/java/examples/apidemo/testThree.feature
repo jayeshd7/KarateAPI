@@ -5,6 +5,7 @@ Background:
     * def postRequestBodyRegisterUser = read('../../resources\\requestBodyRegisterUser.json')
     * def passwordCreationUtility = Java.type('examples.utils.PasswordUtility')
     * def getPwd = passwordCreationUtility.getPassword(8)
+    
 
     Given url 'https://reqres.in'
 
@@ -57,8 +58,9 @@ Scenario: Test the api to get the list of users.
     When method post
     Then status 200
     And match response.id == data_id
-    * def actualToken = validateToken(response.token)
-    * match actualToken == true
+    * def isTokenAlphaNumeric = passwordCreationUtility.tokenValidator(response.token)
+    #* def actualToken = validateToken(response.token)
+    * match isTokenAlphaNumeric == true
 
 Scenario: Test getPassword from java
     * print 'password is' , getPwd

@@ -37,8 +37,18 @@ public class PasswordUtility {
         return new String(password);
     }
 
+    public static boolean tokenValidator(String str){
+        if(str.matches("[A-Za-z0-9]+")){
+            return true;
+        }else {
+            return false;
+        }
+        
+    }
+
     public static void main(String[] args) {
        System.out.println(getPassword(8));
+       System.out.println(tokenValidator("QpwL5tke4Pnpja7X7"));
         
     }
     

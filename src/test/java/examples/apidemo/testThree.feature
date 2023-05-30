@@ -2,9 +2,9 @@ Feature: test the flow of reqres different api's
 
 
 Background: 
-    * def postRequestbodyRegisterUser = read('../../resources\\requestBodyRegisterUser.json')
-    * def passwordCreationUtilis = Java.type('examples.utils.PasswordUtility')
-    * def getpwd = passwordCreationUtilis.getPassword(8)
+    * def postRequestBodyRegisterUser = read('../../resources\\requestBodyRegisterUser.json')
+    * def passwordCreationUtility = Java.type('examples.utils.PasswordUtility')
+    * def getPwd = passwordCreationUtility.getPassword(8)
 
     Given url 'https://reqres.in'
 
@@ -51,9 +51,9 @@ Scenario: Test the api to get the list of users.
     And match response.data.id == data_id
     And def data_email = response.data.email
     And path '/api/register'
-    And set postRequestbodyRegisterUser.email = data_email
-    And set postRequestbodyRegisterUser.password = password
-    And request postRequestbodyRegisterUser
+    And set postRequestBodyRegisterUser.email = data_email
+    And set postRequestBodyRegisterUser.password = getPwd
+    And request postRequestBodyRegisterUser
     When method post
     Then status 200
     And match response.id == data_id
@@ -61,4 +61,4 @@ Scenario: Test the api to get the list of users.
     * match actualToken == true
 
 Scenario: Test getPassword from java
-    * print 'password is' , getpwd
+    * print 'password is' , getPwd

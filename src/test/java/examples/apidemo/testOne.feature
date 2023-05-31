@@ -90,8 +90,7 @@ Scenario: full schema validation
 
 
 Scenario Outline: Single user api test cases with dynamic path.
-    Given url 'https://reqres.in'
-    And path '/api/users/<id>'
+    Given path '/api/users/<id>'
     When method GET
     Then status 200
     And match response.data.id == <id>

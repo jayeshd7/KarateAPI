@@ -62,5 +62,29 @@ Scenario: Test the api to get the list of users.
     #* def actualToken = validateToken(response.token)
     * match isTokenAlphaNumeric == true
 
+@staging
 Scenario: Test getPassword from java
     * print 'password is' , getPwd
+
+Scenario Outline: Single user api test cases with dynamic path.
+    Given path '/api/users/<id>'
+    When method GET
+    Then status 200
+    And match response.data.id == <id>
+
+    Examples:
+        | id |
+        | 3    |
+        | 2    |
+
+Scenario Outline: register user with email and verify the id using example concept.
+    Given path '/api/register'
+    And set postRequestBodyRegisterUser.email = <user_email>
+    And set postRequestBodyRegisterUser.password = getPwd
+    And request postRequestBodyRegisterUser
+    When method post
+    Then status 200
+    And match response.id == <resp_id>
+    Examples:
+    |user_email|resp_id|
+    |"eve.holt@reqres.in"|4|

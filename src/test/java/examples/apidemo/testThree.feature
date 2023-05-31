@@ -79,7 +79,7 @@ Scenario Outline: Single user api test cases with dynamic path.
 
 Scenario Outline: register user with email and verify the id using example concept.
     Given path '/api/register'
-    And set postRequestBodyRegisterUser.email = <user_email>
+    And set postRequestBodyRegisterUser.email = "<user_email>"
     And set postRequestBodyRegisterUser.password = getPwd
     And request postRequestBodyRegisterUser
     When method post
@@ -87,4 +87,18 @@ Scenario Outline: register user with email and verify the id using example conce
     And match response.id == <resp_id>
     Examples:
     |user_email|resp_id|
-    |"eve.holt@reqres.in"|4|
+    |eve.holt@reqres.in|4|
+    |michael.lawson@reqres.in|7|
+
+Scenario Outline: register user with email and pass with out password remove concept.
+    Given path '/api/register'
+    And set postRequestBodyRegisterUser.email = "<user_email>"
+    And remove postRequestBodyRegisterUser.password = getPwd
+    And request postRequestBodyRegisterUser
+    When method post
+    Then status 400
+    And match response.error == "Missing password"
+    Examples:
+    |user_email|
+    |eve.holt@reqres.in|
+    |michael.lawson@reqres.in|

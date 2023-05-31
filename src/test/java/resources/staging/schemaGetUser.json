@@ -1,0 +1,38 @@
+{
+    "schemaOne": {
+        "page":"#number",
+        "per_page": "#number",
+        "total": "#number",
+        "total_pages":"#number",
+        "data" : "#array",
+        "support": {
+            "url": "#string",
+            "text": "#string"
+
+        }
+       
+},
+
+    "schemaTwo": {
+        "page":"#number",
+        "per_page": "#number",
+        "total": "#number",
+        "total_pages":"#number",
+        "data" : "#array",
+        "support": {
+            "url": "#string",
+            "text": "#string"
+
+        }
+        
+    },
+    "data_schema": 
+        {
+        "id":"#number",
+        "email": "#string",
+        "first_name": "#string",
+        "last_name": "#string",
+        "avatar": "#string"
+    }
+
+}

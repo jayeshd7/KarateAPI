@@ -10,9 +10,23 @@ function fn() {
  
   }
   if (env == 'dev') {
+    config.baseUrl = 'https://reqres.in';
+    config.envPageNum = 2;
+    config.envRegisterbody = read('../../resources\\dev\\requestBodyRegisterUser.json');
+
     // customize
     // e.g. config.foo = 'bar';
-  } else if (env == 'e2e') {
+  } 
+  if (env == 'staging') {
+    config.baseUrl = 'https://reqres.in';
+    config.envPageNum = 3;
+    config.envRegisterbody = read('../../resources\\staging\\requestBodyRegisterUser.json');
+   
+
+    // customize
+    // e.g. config.foo = 'bar';
+  }
+  else if (env == 'e2e') {
 
     // customize
   }

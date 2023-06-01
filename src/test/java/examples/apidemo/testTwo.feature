@@ -34,6 +34,7 @@ Scenario: Test the api to get the list of users.
     }
     """
     * def password =  random_string(10)
+    * print 'password is', password
 
     Given path '/api/users'
     And param page = 2

@@ -2,10 +2,12 @@ Feature: test the reqres different api's
 
 Background: 
     * def getSchemaFile = read('../../resources\\schemaGetUser.json')
-    Given url 'https://reqres.in'
+    * def appUrl = read('../../resources\\applicationUrl.json')
+    #Given url 'https://reqres.in'
 
-
+@jayeshTest
 Scenario: Test the api to get the list of users.
+    Given url appUrl.applicationUrl
     Given path '/api/users'
     And param page = 2
     When method GET
